@@ -139,6 +139,54 @@
                     return true
                 }
             }
+
+
+            //删除指定指定节点接口
+            this.remove = function (key) {
+                root = removeNode(root, key)
+            }
+            //查找排序二叉树中最小节点
+            var finMinNode = function (node) {
+                if (node) {
+                    while (node && node.left !== null) {
+                        node = node.left
+                    }
+                }
+                return node
+            }
+            //删除指定指定节点实现
+            var removeNode = function (node, key) {
+                if (node === null) {
+                    return null
+                }
+                if (key < node.key) {
+                    node.left = removeNode(node.left, key)
+                    return node
+                } else if (key > node.key) {
+                    node.right = removeNode(node.right, key)
+                    return node
+                } else {
+                    //左右都没有节点则为叶子节点，可直接删除
+                    if (node.left === null && node.right === null) {
+                        node = null
+                        return node
+                    }
+                    //只有右节点，将当前节点替换成右节点
+                    if (node.left === null) {
+                        node = node.right
+                        return node
+                    } else if (node.right === null) {
+                        //只有左节点，将当前节点替换成做左节点
+                        node = node.left
+                        return node
+                    }
+                    //拥有左右节点的情况
+                    var aux = finMinNode(node.right)
+                    node.key = aux.key
+                    node.right = removeNode(node.right, aux.key)
+                    return node
+                }
+            }
         }
 
         var nodes = [8, 3, 10, 1, 6, 14, 4, 7, 13]
@@ -158,7 +206,11 @@
 
         // console.log(binaryBree.min());
         // console.log(binaryBree.max());
-        console.log(binaryBree.search(8));
+        // console.log(binaryBree.search(8));
+
+        binaryBree.inOrderTraverse(callback)
+        binaryBree.remove(3)
+        binaryBree.inOrderTraverse(callback)
 
     </script>
 </body>
