@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>使用工厂方法模式创建不同功能的按钮</title>
+</head>
+
+<body>
+    <div id="root"></div>
+</body>
+
+<script>    
+    /*
+     * 安全模式创建工厂类
+    */
+    var Factory = function (type, content) {
+        if (this instanceof Factory) {
+            var s = new this[type](content)
+            console.log(s);
+            return s
+        } else {
+            return new Factory(type, content)
+        }
+    }
+
+    /*
+     * 工厂原型中设置创建所有类型数据对象的基类
+    */
+    Factory.prototype = {
+        confirmBtn: function (content) {
+            console.log("confirmBtn");
+        },
+        cancleBtn: function (content) {
+            console.log("cancleBtn");
+        }
+    }
+
+    var btnArray = [{ type: 'confirmBtn', content: '确定按钮' }, { type: 'cancleBtn', content: '取消按钮' }]
+
+    for (var i = 0; i < btnArray.length; i++) {
+        var btn = btnArray[i];
+        new Factory(btn.type, btn.content)
+    }
+
+</script>
+
+</html>
