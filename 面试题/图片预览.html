@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>图片预览</title>
+</head>
+
+<body>
+    <input type="file" name="file" onchange="showPreview(this)" />
+    <img id="portrait" src="" width="70" height="75">
+</body>
+
+<script>
+    /*
+     * 监听input输入
+    */
+    function showPreview(source) {
+        var file = source.files[0];
+        if (window.FileReader) {
+            var fr = new FileReader();
+            fr.onloadend = function (e) {
+                // 生成 base 64位格式数据，写src
+                console.log(e.target.result);
+                document.getElementById("portrait").src = e.target.result;
+            };
+            fr.readAsDataURL(file);
+        }
+    }
+</script>
+
+</html>

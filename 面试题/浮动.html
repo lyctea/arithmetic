@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>基础浮动</title>
+
+    <style>
+        .box {
+            width: 300px;
+            border: 1px solid #000;
+        }
+
+        .left,
+        .right {
+            float: left;
+            height: 100px;
+            width: 45%;
+            border: 1px solid saddlebrown;
+        }
+
+        /* 添加一个标签，清除其左右浮动，缺点是增加了无意义标签
+            <div style="clear:both;"></div>
+        */
+
+        /* 給父容器也添加浮动，缺点是給父元素添加浮动有时候会影响布局，适用场景不多
+        .box {
+            float: left;
+        }
+        */
+
+        /* 給父元素增加 overflow: hidden; 识别子元素的位置，进行隐藏。有两个缺点，一个是不支持IE6，一个是当子元素大小超出父元素时显示问题
+        .box {
+            overflow: hidden;
+        }
+        */
+
+        /* 
+            清除浮动的终极方法，增加一个伪元素，但需要注意的是兼容IE: 6;
+        */
+
+        .box:after {
+            content: "";
+            display: block;
+            height: 0;
+            clear: both;
+        }
+
+        .box {
+            zoom: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <span>其他元素</span>
+    <span>其他元素</span>
+    <div class="box">
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+    <span>其他元素</span>
+</body>
+
+<script>
+    /*
+     * 创建新的节点
+    */
+    // 创建一个DOM节点
+    document.createDocumentFragment()
+    // 创建一个具体的元素
+    document.createElement('div');
+    // 创建文本元素
+    document.createTextNode('文本节点')
+
+    /*
+        增删改查
+    */
+    document.appendChild()
+    document.removeChild()
+    document.replaceChild()
+    document.insertBefore()
+
+
+</script>
+
+</html>
