@@ -1,5 +1,5 @@
 /**
- * 采用闭包实现访问控制，缺点是将圆形分割出了原型
+ * 采用闭包实现访问控制，缺点是将原型分割出来了
  */
 
 var Book = (function() {
@@ -43,6 +43,8 @@ var Book1 = (function() {
     _book.prototype = {
         isJSBook: true
     }
+
+    return _book
 })()
 
-var book1 = new book1()
+var book1 = new Book1()
