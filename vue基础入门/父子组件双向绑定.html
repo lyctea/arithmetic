@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>父子组件双向绑定</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        {{ value }}
+        <my-com v-model='value'></my-com>
+        <button @click='handleDecrease'>-1</button>
+    </div>
+
+</body>
+<script>
+    Vue.component('my-com', {
+        props: {
+            value: {
+                type: Number
+            }
+        },
+        template: '<div>当前值：{{ currentValue }}<button @click="handleAdd">+1</button></div>',
+        data() {
+            return {
+                currentValue: this.value
+            }
+        },
+        watch: {
+            value(val) {
+                this.currentValue = val
+            }
+        },
+        methods: {
+            handleAdd() {
+                this.currentValue++;
+                this.$emit('input', this.currentValue)
+            }
+        }
+    });
+
+    new Vue({
+        el: '#app',
+        data: {
+            value: 10
+        },
+        methods: {
+            handleDecrease() {
+                this.value--;
+            }
+        }
+    })
+</script>
+
+</html>

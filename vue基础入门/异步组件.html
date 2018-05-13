@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>异步组件</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <child-component></child-component>
+    </div>
+
+</body>
+<script>
+    Vue.component('child-component', function (resolve, rejet) {
+        window.setTimeout(function () {
+            resolve({
+                template: `<div>异步加载的组件</div>`
+            })
+        }, 2000)
+    })
+
+    new Vue({
+        el: '#app',
+        data: {
+            message: 'world!'
+        }
+    })
+</script>
+
+</html>
