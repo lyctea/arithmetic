@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <div id="d1">
+    <span><em>1</em></span><span><em>2</em></span>
+  </div>
+</body>
+<script>
+  const nodeValue = document.getElementById('d1')
+  const span = nodeValue.getElementsByTagName('span')[0]
+  // const nextSibling = span.nextSibling
+  console.log(span.parentNode.style.color = 'red')
+  console.log(span.parentElement.style.color = 'blue')
+</script>
+</html>
