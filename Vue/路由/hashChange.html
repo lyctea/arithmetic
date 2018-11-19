@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<ul id="list">
+  <li>angular</li>
+  <li>vue</li>
+  <li>react</li>
+</ul>
+
+<script>
+  window.onload = function () {
+    window.onhashchange = function (opt) {
+      console.log(location.hash);
+    };
+
+    document.querySelector('#list').addEventListener('click', function (event) {
+      if (event.target.nodeName == 'LI') {
+        var content = event.target.innerHTML;
+        var _newState;
+        _newState = {
+          url: location.origin + '/' + content,
+          title: document.title,
+          state: content,
+        };
+
+        window.history.pushState(_newState, '', '/' + content);
+        console.log(content);
+      }
+    });
+  };
+
+
+</script>
+</body>
+</html>
