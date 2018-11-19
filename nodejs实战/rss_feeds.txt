@@ -1,4 +1,0 @@
-http://www.baidu.com
-http://www.baidu2.com
-http://www.baidu3.com
-http://www.baidu4.com
