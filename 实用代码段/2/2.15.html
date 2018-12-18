@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>demo</title>
+</head>
+<body>
+<h2>光标永远停留在文字最后</h2>
+<input type="text" id="cursorPos" value="光标永远停留在文字最后">
+
+
+<script>
+  window.onload = function () {
+    var cursorPos = document.getElementById('cursorPos');
+
+    cursorPos.onclick = cursorPos.onkeyup = function () {
+      var _vLen = this.value.length;
+      if (this.setSelectionRange) {
+        this.setSelectionRange(_vLen, _vLen);
+      } else {
+        var a = this.createTextRange();
+        a.moveStart('character', _vLen);
+        a.collapse(true);
+        a.select();       //选中操作”
+      }
+    };
+  };
+
+</script>
+</body>
+</html>
