@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>关闭输入法</title>
+</head>
+<body>
+<input type="text" banInputMethod="1" id="banInputMethod" value="兼容主流浏览器">
+<script>
+  var arr = [document.getElementById('banInputMethod')];
+  var self = this;
+
+  for (let i = 0, arrLen = arr.length; i < arrLen; i++) {
+    var arrI = arr[i];
+    arrI.onfocus = function () {
+      this.style.imeMode = 'disabled';  //兼容谷歌外的浏览器
+    };
+
+    // 获取属性
+    var banInputMethod = arrI.getAttribute('banInputMethod');
+
+    if (banInputMethod) {
+      var clearChinese = function (_this) {
+        var _v = _this.value;
+        _this.value = _v.replace(/[\u4e00-\u9fa5]/g, ''); //正则替换中文字符
+      };
+
+      arrI.onkeyup = function () {
+        clearChinese(this);
+      };
+
+      arrI.onblur = function () {
+        clearChinese(this);
+      };
+    }
+  }
+
+</script>
+</body>
+</html>

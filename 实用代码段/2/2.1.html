@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<h2>去除字符左右两边空格</h2>
+<input type="text" id="strs" value="  需要过滤空格   " disabled>
+<input type="button" id="resBtn" value="过滤">
+
+<script type="text/javascript">
+  window.onload = function () {
+    var _rstrsBtn = document.getElementById('resBtn')
+    var _strs = document.getElementById('strs')
+
+    _rstrsBtn.onclick = function () {
+      _strs.value = _strs.value.replace(/^(\s|\u00A0)+|(\s|\u00A0)+$/g, '');
+    }
+  }
+
+</script>
+</body>
+</html>
