@@ -1,5 +1,5 @@
 //创建一个栈
-var Stack = (function () {
+var Stack = /** @class */ (function () {
     function Stack() {
         this.items = [];
         this.push = function (element) {
@@ -38,7 +38,7 @@ function divideBy2(decNumber) {
     }
     return binaryString;
 }
-console.log(divideBy2(233));
+console.log(divideBy2(233)); //11101001
 //从十进制转换到任何进制
 function baseConverter(decNumber, base) {
     var remStack = new Stack(), rem, binaryString = '', digits = '0123456789ABCDEF';
@@ -52,4 +52,4 @@ function baseConverter(decNumber, base) {
     }
     return binaryString;
 }
-console.log(baseConverter(233, 16));
+console.log(baseConverter(233, 16)); //E9
