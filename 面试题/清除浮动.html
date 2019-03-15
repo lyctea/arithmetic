@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      .main {
+        border: 1px solid #000;
+      }
+
+      .clearfix:after {
+        content: "\0020";
+        display: block;
+        height: 0;
+        clear: both;
+      }
+      .clearfix {
+        zoom: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main clearfix">
+      <div style="float:left;width:45%;">1</div>
+      <div style="float:right;width:45%;">2</div>
+    </div>
+  </body>
+</html>
