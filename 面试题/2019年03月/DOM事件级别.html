@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      #parent p {
+        border: 1px solid red;
+        width: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="btn">click me!</button>
+    <div id="parent">
+      <h2>事件委托</h2>
+      <p>click me!</p>
+      <p>click me!</p>
+      <p>click me!</p>
+      <p>click me!</p>
+      <p>click me!</p>
+    </div>
+    <script>
+      // 事件委托
+      const parent = document.getElementById("parent");
+      parent.addEventListener(
+        "click",
+        function(event) {
+          const { target, currentTarget } = event;
+          // console.log(target.style.height);
+          // console.log(getComputedStyle(target).height);
+          // console.log(target.getBoundingClientRect());
+          if (target.nodeName.toLowerCase() === "p") {
+            target.style.color = "yellow";
+          }
+        },
+        false
+      );
+    </script>
+    <script>
+      const btn = document.getElementById("btn");
+      // DOM0
+      btn.onclick = function() {
+        // console.log("btn.onclick");
+      };
+      // DOM2
+      btn.addEventListener(
+        "click",
+        function(event) {
+          console.log(event.currentTarget); // 当前绑定事件的对象
+          console.log(event.target); // 当前触发事件的对象
+        },
+        false
+      );
+
+      // 自定义事件
+      // var eve = new Event("custome");
+      const eve = new CustomEvent("custome", {
+        detail: { hazcheeseburger: true }
+      });
+      btn.addEventListener("custome", function(e) {
+        console.log(e.detail);
+        console.log("custome event");
+      });
+      btn.dispatchEvent(eve); // 自定义触发事件
+    </script>
+  </body>
+</html>
