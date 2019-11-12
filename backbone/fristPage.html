@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/underscore.js/1.9.1/underscore-min.js"></script>
+    <script src="https://cdn.bootcss.com/backbone.js/1.4.0/backbone-min.js"></script>
+    <script>
+        $(function () {
+          window.Test = Backbone.Model.extend({
+            defaults: {
+              content: ''
+            }
+          })
+
+          window.TestList = Backbone.Collection.extend({
+            model: Test
+          })
+
+          var data = new TestList({
+            content: 'hello world!'
+          })
+
+          window.TestView = Backbone.View.extend({
+            el: $('body'),
+            initialize: function () {
+              $('#divTip')
+                .html(data.models[0].get('content'))
+            }
+          })
+
+          window.App = new TestView
+        })
+    </script>
+</head>
+<body>
+    <div id="divTip"></div>
+</body>
+</html>

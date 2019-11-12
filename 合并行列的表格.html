@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <html>
+      <body>
+        <table border="1" cellspacing="0" width="50%" height="150">
+          <tr>
+            <th>班级</th>
+
+            <th>姓名</th>
+
+            <th>年龄</th>
+
+            <th>电话</th>
+          </tr>
+
+          <tr>
+            <td rowspan="2">601班</td>
+            <!--rowspan="2"纵向合并两个单元格-->
+
+            <td>Jack</td>
+
+            <td>24</td>
+
+            <td>1351234567</td>
+          </tr>
+
+          <tr>
+            <td>Tom</td>
+
+            <td>22</td>
+
+            <td>1351234567</td>
+          </tr>
+
+          <tr>
+            <td rowspan="3">602班</td>
+            <!--rowspan="3"纵向合并三个单元格-->
+
+            <td>Rose</td>
+
+            <td>22</td>
+
+            <td>1351234567</td>
+          </tr>
+
+          <tr>
+            <td>张三</td>
+
+            <td>25</td>
+
+            <td>1351234567</td>
+          </tr>
+
+          <tr>
+            <td>李四</td>
+
+            <td>25</td>
+
+            <td>1351234567</td>
+          </tr>
+        </table>
+
+        <table border="1" cellspacing="0" width="50%" height="150">
+          <tr>
+            <th>标液浓度 C标（mol/L）</th>
+            <th>标液浓度 均值Cp（mol/L）</th>
+            <th>相对标准偏差 （% ）</th>
+          </tr>
+          <tr>
+            <td><input type="text" /></td>
+            <td rowspan='3'><input id="Cp" mark="bl byAverageResult" name="Cp" /><input type="button" class="byAverageResult" value="计算" target="Cp"/></td>
+            <td rowspan='3'><input id="xdbzpc" name="xdbzpc"/><input type="button" class="byAverageResult" value="计算" target="Cp"/></td>
+          </tr>
+          <tr>
+            <td><input type='text' /></td>
+          </tr>
+          <tr>
+            <td><input type='text' /></td>
+          </tr>
+        </table>
+      </body>
+    </html>
+  </body>
+</html>

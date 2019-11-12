@@ -23,3 +23,20 @@ var deepCopy = function(obj) {
 
   return newObj;
 };
+
+/*
+ * 另一个实现方案
+ * */
+function deepClone(obj) {
+  if (obj === null) return null;
+  if (obj instanceof RegExp) return new RegExp(obj);
+  if (obj instanceof Date) return new Date(obj);
+  if (typeof obj !== "object") return obj;
+
+  let t = new obj.constructor();
+  for (let key in obj) {
+    t[key] = deepClone();
+  }
+
+  return t;
+}
