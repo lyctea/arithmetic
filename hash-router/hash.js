@@ -28,7 +28,7 @@ Router.prototype.refresh = function () {
  * 初始化监听事件
  */
 Router.prototype.load = function () {
-  window.addEventListener('load', this.refresh.bind(this), false)
+  window.addEventListener('load', this.refresh.bind(this), false)   
   window.addEventListener('hashchange', this.refresh.bind(this), false)
 }
 
