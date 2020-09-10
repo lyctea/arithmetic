@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<h1>事件循环机制</h1>
+<script>
+  /*
+  *
+  *
+  * */
+  setTimeout(function () {
+    console.log(1);
+  }, 200);
+
+  new Promise(function (resolve, reject) {
+    console.log(2)
+    for (var i = 0; i < 10000; i++) {
+      i < 10000 && resolve()
+    }
+    console.log(3)
+  }).then(function (val) {
+    console.log(4);
+  })
+
+  console.log(5)
+
+  setTimeout(function () {
+    console.log(6);
+  }, 100);
+</script>
+</body>
+</html>
