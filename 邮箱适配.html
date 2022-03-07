@@ -1,0 +1,64 @@
+<!--
+ * @Author: Jupiter
+ * @Date: 2021-08-19 11:08:02
+ * @LastEditors: Jupiter
+ * @LastEditTime: 2021-08-19 20:12:36
+ * @Description: 文件描述
+ * @FilePath: /arithmetic/邮箱适配.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 图片轮播
+      function LoopImg(imgArr, container) {
+        this.imgArr = imgArr;
+        this.container = container;
+      }
+
+      LoopImg.prototype = {
+        // 创建图片
+        createImg: function () {
+          console.log("create");
+        },
+        // 切换下一张
+        changeImg: function () {
+          console.log("change");
+        },
+      };
+
+      // 上下滑动
+      function SlideLoop(imgArr, container) {
+        LoopImg.call(this, imgArr, container);
+      }
+
+      console.log(new SlideLoop("imgArr", "#div").imgArr);
+      console.log(new SlideLoop("imgArr", "#div").container);
+
+      SlideLoop.prototype = new LoopImg();
+
+      SlideLoop.prototype.changeImg = function () {
+        console.log("change by slide");
+      };
+
+      // 渐隐渐显
+      function FadeLoop(imgArr, container) {
+        LoopImg.call(this, imgArr, container);
+      }
+
+      FadeLoop.prototype = new LoopImg();
+
+      FadeLoop.prototype.changeImg = function () {
+        console.log("change by fade");
+      };
+
+      console.log(new FadeLoop().changeImg());
+    </script>
+  </body>
+</html>
