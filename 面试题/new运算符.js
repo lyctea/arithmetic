@@ -1,6 +1,6 @@
 var new2 = function(func) {
-    var o = Object.create(func.prototype)
-    var k = func.call(o)
+    var o = Object.create(func.prototype) // 创建对象并进行原型链接
+    var k = func.call(o)  // 绑定this上下文
 
     if (typeof k === "object") {
         return k
