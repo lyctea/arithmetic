@@ -1,4 +1,12 @@
 /*
+ * @Author: Jupiter
+ * @Date: 2021-06-30 17:54:11
+ * @LastEditors: Jupiter
+ * @LastEditTime: 2022-03-13 23:51:45
+ * @Description: 文件描述
+ * @FilePath: /arithmetic/设计模式之美/oopDemo/修饰符.ts
+ */
+/*
     public：公有，默认 。访问级别：自身、子类、类外。
     protected：受保护。访问级别：自身、子类。
     private：私有 。访问级别：自身
