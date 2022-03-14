@@ -2,7 +2,7 @@
  * @Author: Jupiter
  * @Date: 2022-03-14 00:08:57
  * @LastEditors: Jupiter
- * @LastEditTime: 2022-03-14 00:25:02
+ * @LastEditTime: 2022-03-14 11:34:39
  * @Description: 文件描述
  * @FilePath: /arithmetic/面试题/2022年03月/深入ts/组合寄生继承.js
  */
