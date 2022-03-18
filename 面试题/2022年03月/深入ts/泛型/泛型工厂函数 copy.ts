@@ -2,7 +2,7 @@
  * @Author: Jupiter
  * @Date: 2022-03-18 11:13:31
  * @LastEditors: Jupiter
- * @LastEditTime: 2022-03-18 15:41:45
+ * @LastEditTime: 2022-03-18 15:53:19
  * @Description: 泛型工厂函数.ts;
  * @FilePath: /arithmetic/面试题/2022年03月/深入ts/泛型/泛型工厂函数 copy.ts
  */
@@ -42,10 +42,15 @@ let Constructor: ConstructorType = CommercialBank;
 let con2 = new Constructor("招商银行", "万绿园2");
 
 // 3. 泛型工厂函数, 一个类有双重含义，a：构造函数，b：类类型
-function createInstanceFactory2<T>(Constructor: { new (...arg: any): T }) {
+function createInstanceFactory2<T>(Constructor: iFactoryType<T>) {
   console.log(Constructor.name + "被创建对象");
 
   return new Constructor("光大银行", "万绿园");
+}
+
+// type FactoryType<T> = new (...arg: any) => T;
+interface iFactoryType<T> {
+  new (...arg: any): T;
 }
 
 let con3 = createInstanceFactory2<CommercialBank>(CommercialBank);
