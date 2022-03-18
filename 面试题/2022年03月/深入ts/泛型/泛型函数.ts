@@ -2,9 +2,9 @@
  * @Author: Jupiter
  * @Date: 2022-03-17 23:31:15
  * @LastEditors: Jupiter
- * @LastEditTime: 2022-03-17 23:31:15
+ * @LastEditTime: 2022-03-18 11:06:57
  * @Description: 文件描述
- * @FilePath: /arithmetic/面试题/2022年03月/深入ts/泛型函数.ts
+ * @FilePath: /arithmetic/面试题/2022年03月/深入ts/泛型/泛型函数.ts
  */
 
 function quickSort<T>(arr: Array<T>): Array<T> {
