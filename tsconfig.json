@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "esnext",
+    "target": "es5",
     "experimentalDecorators": true, // 主要是这个
   },
   "exclude": ["node_modules"],

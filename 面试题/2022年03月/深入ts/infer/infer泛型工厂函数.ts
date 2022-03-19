@@ -2,7 +2,7 @@
  * @Author: Jupiter
  * @Date: 2022-03-19 11:02:19
  * @LastEditors: Jupiter
- * @LastEditTime: 2022-03-19 11:21:58
+ * @LastEditTime: 2022-03-19 11:41:08
  * @Description: 文件描述
  * @FilePath: /arithmetic/面试题/2022年03月/深入ts/infer/infer泛型工厂函数.ts
  */
@@ -33,7 +33,7 @@ namespace InferDemo {
   // 泛型工厂函数
   function createInstanceFactory<T, P extends constructorType>(
     Constructor: constructorReturnType<T>,
-    ...Parameter: constructorParameterType<P>
+    ...Parameter: constructorParameterType<P> //获取构造函数参数类型，以ts元组表示
   ) {
     return new Constructor(...Parameter);
   }
