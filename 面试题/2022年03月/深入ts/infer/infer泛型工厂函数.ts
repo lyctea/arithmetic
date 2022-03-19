@@ -2,7 +2,7 @@
  * @Author: Jupiter
  * @Date: 2022-03-19 11:02:19
  * @LastEditors: Jupiter
- * @LastEditTime: 2022-03-19 11:41:08
+ * @LastEditTime: 2022-03-19 22:28:21
  * @Description: 文件描述
  * @FilePath: /arithmetic/面试题/2022年03月/深入ts/infer/infer泛型工厂函数.ts
  */
