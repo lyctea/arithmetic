@@ -2,7 +2,7 @@
  * @Author: Jupiter
  * @Date: 2022-03-19 23:29:58
  * @LastEditors: Jupiter
- * @LastEditTime: 2022-03-20 01:04:01
+ * @LastEditTime: 2022-03-20 15:10:09
  * @Description: 文件描述
  * @FilePath: /arithmetic/面试题/2022年03月/深入ts/手写Promise/Promise.ts
  */
@@ -41,12 +41,14 @@ class Promise<T = any> {
   }
 
   then(resolveInThen: ResolveType, rejectinThen: RejectType) {
-    if (this.status === "success") {
-      resolveInThen(this.resolve_executor_value);
-    }
-    if (this.status === "fail") {
-      rejectinThen(this.reject_executor_value);
-    }
+    return new Promise(() => {
+      if (this.status === "success") {
+        resolveInThen(this.resolve_executor_value);
+      }
+      if (this.status === "fail") {
+        rejectinThen(this.reject_executor_value);
+      }
+    });
   }
 }
 
