@@ -2,7 +2,7 @@
  * @Author: Jupiter
  * @Date: 2022-04-02 18:23:59
  * @LastEditors: Jupiter
- * @LastEditTime: 2022-04-02 18:48:03
+ * @LastEditTime: 2022-04-02 19:10:39
  * @Description: 文件描述
  * @FilePath: /arithmetic/面试题/2022年03月/vue设计与实现/响应式-副作用函数优化.html
 -->
@@ -33,24 +33,40 @@
             fn()
         }
 
-        const bucket = new Set()
+        const bucket = new WeakMap()
         // 原始数据
         const data = { text: 'hello world' }
         // 原始数据代理
         const obj = new Proxy(data, {
             get(target, key) {
-                if(activeEffect) {
-                    bucket.add(activeEffect)
-                }
+                track(target, key)
                 return target[key]
             },
             set(target, key, newVal) {
                 target[key] = newVal
-                // 执行副作用函数
-                bucket.forEach(fn => fn())
-                return true
+                trigger(target, key)                
             }
         })
+
+        function track(target, key) {
+            if(!activeEffect) return
+            let depsMap = bucket.get(target) // bucket => weakMap, target: depsMap
+            if(!depsMap) {
+                bucket.set(target, (depsMap = new Map())) // depsMap => Map, key: deps
+            }
+            let deps = depsMap.get(key)
+            if(!deps) {
+                depsMap.set(key, (deps = new Set())) // deps => set, key: effect
+            }
+            deps.add(activeEffect)
+        }
+
+        function trigger(target, key) {
+            const depsMap = bucket.get(target)
+            if(!depsMap) return
+            const effects = depsMap.get(key)
+            effects && effects.forEach(fn => fn())
+        }
 
         effect(() => {
             console.log('effect run');
@@ -59,7 +75,7 @@
 
         setTimeout(() => {
             // 修改不存在的属性也会执行effect，这显然不合理
-            obj.noExit = 'hello vue3'
+            obj.text = 'hello vue3'
         }, 1000)
     </script>
 </body>
