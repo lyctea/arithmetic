@@ -1,0 +1,49 @@
+<!--
+ * @Author: Jupiter
+ * @Date: 2022-04-02 18:07:47
+ * @LastEditors: Jupiter
+ * @LastEditTime: 2022-04-02 18:17:32
+ * @Description: 文件描述
+ * @FilePath: /arithmetic/面试题/2022年03月/vue设计与实现/响应式-副作用函数.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        const bucket = new Set()
+        // 原始数据
+        const data = { text: 'hello world' }
+        // 原始数据代理
+        const obj = new Proxy(data, {
+            get(target, key) {
+                bucket.add(effect)
+                return target[key]
+            },
+            set(target, key, newVal) {
+                target[key] = newVal
+                // 执行副作用函数
+                bucket.forEach(fn => fn())
+                return true
+            }
+        })
+
+        function effect() {
+            document.body.innerText = obj.text
+        }
+
+        // 先执行副作用函数，收集副作用函数
+        effect()
+
+        setTimeout(() => {
+            obj.text = 'hello vue3'
+        }, 1000)
+    </script>
+</body>
+</html>
